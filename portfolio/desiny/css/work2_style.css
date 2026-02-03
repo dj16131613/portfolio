@@ -1,0 +1,65 @@
+@charset "utf-8";
+a{text-decoration: none; color: inherit; cursor: pointer;}
+html,body{width: 100%; height: 100%; background: #121437;}
+.warp{position: relative; width: 100%; }
+
+/*헤더*/
+header{ height: 120px; position: fixed; left: 0; top: 0; right: 0; z-index: 1;}
+header ul{right: 10px; position: absolute; display: flex; bottom: 40%}
+header ul li{width: 130px; height: 30px; color: aqua; line-height: 30px; text-align: center; text-shadow: 0 0 3px white, 0 0 6px  white , 0 0 10px white }
+header ul li a{display: block; height: 100%; width: 100%;}
+
+/*메인*/
+main{width: 100%; height: 1250px; position: relative; background: url(../images/main/cloud2.png) no-repeat center 15% ; overflow: hidden;}
+.moviecon{width: 160%; display: flex; height: 100%; z-index: 3; margin-left: calc(-100% / 3) }
+.moviecon li{width:calc(100% / 3); margin-top: 200px;  position: relative; opacity: 60%; }
+.moviecon li.on{opacity: 100%;}
+.maviecon li a{display: block; height: 100%;}
+.moviecon li a img{margin: auto; display: block;}
+
+
+
+.cloud1{background: url(../images/main/maincloud.png) no-repeat center; width: 100%; height: 1000px; position: absolute; left: 50%; top: 67%; transform: translate(-50%, -50%); z-index: 5;}
+.star{background: url(../images/star.png) center no-repeat; width: 100%; height: 100%; position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); z-index: 1;}
+
+/*영화목록*/
+.list{width: 100%; height: 2000px;  background: url(../images/bg.png) no-repeat center ;}
+.list ul{width: 100%; height: 100%;}
+.list ul li{width: 100%;}
+.list ul li ul{height: 300px; align-items: center;  width: 100%; display: flex; overflow: hidden;}
+.list ul li ul li{ flex: 0 0 calc(100% / 7); height: 100%; align-content: center;}
+.list ul li ul li a img{width: 200px; display: block; margin: auto; box-shadow:  0 0 6px white,  0 0 13px white;}
+.list ul li ul li a{margin: auto; display: block;}
+
+.list>ul>li>ul>li>a:hover>img{width: 230px;}
+.list>ul>li>ul>li>a:hover>{width: 230px;}
+.list ul li{position: relative;}
+.list ul li span{color: aqua; position: absolute; left: 20px; top: 55px; text-shadow: 0 0 3px white, 0 0 6px  white , 0 0 10px white}
+
+/*오프닝*/
+.intro{width: 100%; height: 955px; position: fixed; top: 0; background: rgba(39, 37, 37, 0.5); z-index: 999; display: none;}
+.intro ul{align-content: center; height: 100%;}
+.intro ul li{height: 230px; align-content: center;}
+.intro ul li img{height: 150px; display: block;}
+
+.openlogo{width: 600px; height: 600px; margin: auto; margin-top: 130px; position: relative;}
+.logo1{width: 580px; position: absolute; left: 2px; top: 350px;}
+.logo2{width: 567px; position: absolute; left: 42px; top: 15px;}
+
+/*푸터*/
+footer{width: 100%; height: 350px;}
+footer h2{margin: auto; width: 400px; align-content: center; margin-bottom: 30px;}
+footer h2 img{display: block; margin: auto;}
+
+.footertext{color: aliceblue;width: 100%; text-align: center;}
+.footertext li ul{text-align: center;width: 100%;}
+.footertext li{width: 100%;}
+
+.f_text{display: flex; margin: auto; width: 1300px; text-align: center;}
+.f_text li a{display: block ; padding: 20px; }
+
+.s_text{margin: 30px 0;}
+.s_text li{margin: 30px 0;}
+
+
+.popup{background: url(../images/popup.png) no-repeat center; position: absolute; left: 0; top: 0; width: 100%; height: 2000px; z-index: 9999; display: none;}

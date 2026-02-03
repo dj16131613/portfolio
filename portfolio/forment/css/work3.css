@@ -1,0 +1,176 @@
+@charset "utf-8";
+
+.warp{width: 100%; height: 100vh;}
+
+
+header { width: 100%;  top: 0; position: relative; }
+h1{width: 100%; margin: 1% 0;}
+header h1 img{margin: auto; width: 18%; display: block;}  
+
+
+
+
+nav{width: 100%; background: #e8eaf6;}
+nav ul {display: flex; justify-content: space-between; font-family: "season"; font-size: 1.5vw; margin: 2px 10px; padding: 2px 0;}
+nav ul li {margin: 0 1.5em;}
+nav ul li a:hover{color: #ffffff; text-shadow: #848486 0 0 5px;}
+nav ul li a{width: 100%; display: block; height: 100%;}
+/*--------------------모바일-----------------*/
+.mobile{display: none;}
+
+
+.menuicon{ display: none; left: 0; top: 0; z-index: 100; position: fixed;} /*메뉴아이콘 모바일에서만구동*/
+.menuicon img{width: 10%; left: 10px; top: 7px; } 
+
+
+/*메인이미지*/
+
+
+.mobilemain{width: 100%; margin-top: 45px;}
+.mainimg{width: 100%; }
+.mainimg li{width: 100%; display: none;}
+.mainimg li.on{display: block;}
+.mainimg li img{width: 80%; margin: auto; display: block;}
+
+/*콜라보로고*/
+.colabologo{display: flex; width: 100%; margin-top: 32px;}
+.colabologo li{width: 25%;}
+.colabologo li a{display: block; width: 100%;}
+.colabologo li a img{width: 70%; display: block; margin: auto;}
+
+/*바로가기퍼즐*/
+.puzzle{justify-content: center;}
+.puzzle ul{display: flex; width: 100%; margin: 20px auto; justify-content: space-around;}
+.go1{width: 40%;}
+.go2{width: 55%;}
+.puzzle ul li a{width: 100%;}
+.puzzle ul li a img{width: 100%;}
+
+.season{width: 100%; justify-content: center;}
+.seasonbox{width: 70%; margin: auto; position: relative;  justify-content: center; z-index: 3;}
+.seasonbox > img{width: 100%; }
+.puzzle1{width: 50%; height: 50%; position: absolute; left: 0; top: 0;}
+.puzzle2{width: 50%; height: 50%; position: absolute; right: 0; top: 0;}
+.puzzle3{width: 50%; height: 50%; position: absolute; left: 0; bottom: 0;}
+.puzzle4{width: 50%; height: 50%; position: absolute; right: 0; bottom: 0;}
+
+.pop{width: 140%; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%); background: rgba(0, 0,0, 0.1); display: none;}
+.pop div{width: 90%; margin: auto;}
+.pop div img{width: 100%;}
+.pop button{position: absolute; right: 0; top: 0; border: none; background: none; color: #e8eaf6;}
+
+
+@font-face {
+    font-family:'season' ;
+    src:  url(../font/SF함박눈TTF.ttf)  format('truetype') ;
+    
+}
+.season_text{width: 100%; text-align: center; padding: 1em 0;  font-family: 'season';}
+
+
+
+/*------------------------모바일 페이지 끝--------------------------*/
+
+/*------------------------데스크탑------------------*/
+
+/*데스크탑 콜라보아이템 목록*/
+.item-list{display: flex; width: 90%; align-items: center;justify-content: space-around; margin: auto; margin-top: 8%;}
+.item-list li{width: 20%; height: 40%; align-content: center;}
+.item-list li a img{width: 100%; margin: auto; display: block;}
+.item-list li a{display: block; width: 100%; box-shadow: 0 0 3px rgb(163, 163, 163),  0 0 10px rgb(60, 60, 60); margin: auto; align-items: center;}
+.item-list:hover li a{transform: scale(0.6);}
+.item-list li:hover a{transform: scale(1.2);}
+
+
+
+/*데스크탑 바로가기 퍼즐*/
+.deskpuzzle{width: 100%; margin-top:5%; margin-bottom: 5%;}
+.deskpuzzle div a img{width: 100%; display: block;}
+.deskpuzzle div a {width: 100%; display: block;}
+.deskpuzzle1{width: 45%; margin-left: 10%; }
+.deskpuzzle2{width: 45%; margin-left: 45%; margin-top: 25px;}
+
+/*데스크탑 시즌제품*/
+.desk-season1{width: 100%; background: rgba(240, 240,249, 0.4); padding: 10px 0;}
+.desk-season{width: 60%; margin: auto; overflow: hidden; margin-top: 5%; margin-bottom: 5%;box-shadow: 0 0 3px white, 0 0 8px  white , 0 0 14px white;}
+.desk-season ul{display: flex; width: 400%;}
+.desk-season ul li{width: 100% / 4;}
+.desk-season ul li a{width: 100%; display: block;}
+.desk-season ul li img{width: 100%;}
+
+
+
+
+
+
+
+/*푸터*/
+footer{width: 100%; margin: 20px 0;}
+footer a{width: 10%; display: block; margin: 20px 10px;}
+footer a img{width: 100%;}
+footer>ul{display: flex; justify-content: space-between;}
+.footer2{display: flex;}
+.footer1 li{font-size:0.9vw; margin-top: 10px; margin-left: 2%;}
+.footer2 li{font-size:0.9vw; margin: 10px 5px;}
+
+
+/*미디어스크린*/
+
+@media screen and (max-width: 468px) {
+ .mobile{
+    display:block;
+ }
+ .desktop{
+    display: none;
+ }
+ header h1 img{width: 20%;}
+ header{background:  #e8eaf6; padding: 1% 0; position: fixed; z-index: 999;}
+
+.menuicon{width: 4%; display: block; z-index: 999; position:absolute; left:3%; top: 50%; transform: translate(-50% , -50%)} /*메뉴아이콘 모바일에서만구동*/
+.menuicon img{width: 100%; left: 10px; top: 7px; } 
+
+.menuicon{display: block;}
+
+nav{width: 40%; position:absolute; left: 0; top: 100%; height: 100vh; background: #e8eaf6f9; z-index: 50; display: none;}
+nav ul{width: 100%; flex-direction: column; margin: 0;}
+nav ul li{width: 100%; margin: 0;}
+.nav1{margin-top: 15px;}
+.nav1 li a{font-size: 3.5vw; width: 100%; display: block; text-align: center; padding: 7px 0;}
+.nav2{margin-top: 20px;}
+.nav2 li a{font-size: 3.5vw; width: 100%; display: block; text-align: center; padding: 7px 0;}
+
+footer a{width: 20%; display: block; margin: 20px 10px;}
+.footer1 li{font-size:1.4vw; margin-top: 10px; margin-left: 2%;}
+.footer2 li{font-size:1.4vw; margin: 10px 5px;}
+}
+
+
+@media screen and (max-width : 768px) {
+   .item-list{flex-wrap: wrap; gap: 10px; margin-top: 15%;}
+   .item-list li{width: calc(50% - 30px);;}
+
+   .item-list:hover li a{transform: none;}
+   .item-list li:hover a{transform: none;}
+   .menuicon{width: 4%; display: block; z-index: 999; position:absolute; left:3%; top: 50%; transform: translate(-50% , -50%)} /*메뉴아이콘 모바일에서만구동*/
+   .menuicon img{width: 100%; left: 10px; top: 7px; } 
+
+   .menuicon{display: block;}
+
+    header h1 img{width: 20%;}
+ header{background:  #e8eaf6; padding: 1% 0; position: fixed; z-index: 999;}
+
+
+
+   nav{width: 40%; position:absolute; left: 0; top: 100%; height: 100vh; background: #e8eaf6f9; z-index: 50; display: none;}
+ nav ul{width: 100%; flex-direction: column; margin: 0;}
+ nav ul li{width: 100%; margin: 0;}
+ .nav1{margin-top: 15px;} 
+ .nav1 li a{font-size: 3.5vw; width: 100%; display: block; text-align: center; padding: 7px 0;}
+ .nav2{margin-top: 20px;} 
+ .nav2 li a{font-size: 3.5vw; width: 100%; display: block; text-align: center; padding: 7px 0;}
+
+ footer a{width: 20%; display: block; margin: 20px 10px;}
+ .footer1 li{font-size:1.4vw; margin-top: 10px; margin-left: 2%;}
+ .footer2 li{font-size:1.4vw; margin: 10px 5px;}
+   
+}

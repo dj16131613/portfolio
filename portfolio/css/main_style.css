@@ -1,0 +1,533 @@
+@charset "utf-8";
+
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/*  은하수 밤하늘 */
+body {
+  min-height: 100vh;
+
+  background:
+    /* 은하수 빛 띠 */
+    radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, .08), transparent 60%),
+    radial-gradient(ellipse at 60% 50%, rgba(180, 200, 255, .07), transparent 65%),
+    radial-gradient(ellipse at 80% 70%, rgba(255, 255, 255, .05), transparent 60%),
+
+    /* 기본 밤하늘 */
+    radial-gradient(ellipse at bottom,
+      #0b1020 0%,
+      #02030a 70%);
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, .6) 1px, transparent 2px),
+    radial-gradient(circle at 28% 42%, rgba(255, 255, 255, .4) 1px, transparent 2px),
+    radial-gradient(circle at 44% 75%, rgba(255, 255, 255, .5) 1px, transparent 2px),
+    radial-gradient(circle at 63% 22%, rgba(255, 255, 255, .35) 1px, transparent 2px),
+    radial-gradient(circle at 77% 58%, rgba(255, 255, 255, .45) 1px, transparent 2px),
+    radial-gradient(circle at 85% 83%, rgba(255, 255, 255, .3) 1px, transparent 2px),
+    radial-gradient(circle at 15% 65%, rgba(255, 255, 255, .25) 1px, transparent 2px),
+    radial-gradient(circle at 55% 35%, rgba(255, 255, 255, .4) 1px, transparent 2px);
+
+  background-repeat: no-repeat;
+}
+
+
+section {
+  width: 100%;
+}
+
+/* 헤더 기본 */
+header.night {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 별 레이어 */
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 별(점) */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .9);
+  opacity: var(--o);
+  width: var(--s);
+  height: var(--s);
+
+  box-shadow: 0 0 8px rgba(255, 255, 255, .25);
+
+  /* ✅ 반짝임 + 아래로 흐름 */
+  animation:
+    starTwinkle var(--tw) ease-in-out infinite,
+    starDrift var(--mv) linear infinite;
+  animation-delay: var(--delay), var(--delay);
+
+  will-change: transform, filter, opacity;
+}
+
+@keyframes starTwinkle {
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(2.1);
+  }
+}
+
+
+@keyframes starDrift {
+  from {
+    transform: translate3d(0, -120vh, 0);
+  }
+
+  to {
+    transform: translate3d(var(--dx), 120vh, 0);
+  }
+}
+
+/* main-opening 정중앙 */
+.main-opening {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 2;
+}
+
+.main-opening div img {
+  display: block;
+  margin: 0;
+}
+
+
+
+/* 스크롤 길이 */
+.character_scroll{
+  height: 300vh;
+  position: relative;
+}
+
+.character_scroll .character_back{
+  position: sticky;
+  top: 0;
+}
+
+.selfies{
+  display: flex;
+  width: 100%;
+  gap: 20px;
+
+  height: 100%;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+
+  will-change: transform;
+}
+
+.selfies li{
+  flex: 0 0 calc((100% - 80px) / 5);
+}
+
+.selfies li img{
+  width: 100%;
+  display: block;
+  border-radius: 5%;
+}
+
+/*----------------------팝업------------*/
+.popup_img{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 100;
+  pointer-events: none;
+
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95);
+  will-change: transform, opacity;
+
+  width: 27vw;          /* 🔥 화면 기준 */
+  max-width: 800px;     /* 너무 커지는 것 방지 */
+  min-width: 320px;     /* 모바일 가독성 보장 */
+
+  height: auto;
+  border-radius: 1.5vw; /* 비율 유지 */
+  box-shadow: 0 3vw 6vw rgba(0,0,0,0.4);
+}
+
+
+
+.character_back{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/*소개와 능력치*/
+
+/* ----------------- ME 가로 스크롤 구간 ----------------- */
+.me {
+  width: 100%;
+  overflow: clip;
+  height: 300vh;
+}
+
+/* sticky 가로 트랙 */
+.intro_ability {
+  width: max-content;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  will-change: transform;
+}
+
+/* 각 패널 100vw */
+.intro_ability>li {
+  flex: 0 0 100vw;
+}
+
+/* ----------------- INTRO (순차 스크롤 공개) ----------------- */
+.intro {
+  height: 100vh;
+  align-content: center;
+  text-align: center;
+}
+
+.intro ul {
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
+
+.intro ul li {
+  margin-top: 1%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.intro>ul>li {
+  --t: 0;
+  /* 0~1 */
+}
+
+.intro>ul>li img {
+  opacity: var(--t);
+  clip-path: inset(0 calc(100% - (var(--t) * 100%)) 0 0);
+  transition: none;
+  will-change: clip-path, opacity;
+}
+
+/* ----------------- ABILITY (게이지 스크롤 비례) ----------------- */
+.ability {
+  position: relative;
+  height: 100vh;
+}
+
+.ability ul {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ability ul li {
+  color: aliceblue;
+  display: flex;
+  font-size: 40px;
+  padding: 20px;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+}
+
+.ability ul li h2 {
+  padding: 15px;
+  margin: 0 20px;
+  width: 15%;
+}
+
+/* ✅ 스크롤 비례라 transition 끔 */
+.ability [class^="gage"] {
+  width: 0;
+  height: 30px;
+  background: #ffffff;
+  border-radius: 999px;
+  transition: none;
+  will-change: width;
+}
+
+
+
+/*작업물*/
+.work {
+  width: 100%;
+  height: 500vh;
+}
+
+.workpiece {
+  width: max-content;
+  height: 100vh;
+  overflow: clip;
+  position: sticky;
+  align-items: center;
+  top: 0;
+  width: 100%;
+}
+
+.workpiece>ul {
+  display: flex;
+  width: 300%;
+  position: absolute;
+  height: 100%;
+  align-items: center;
+  z-index: 5;
+  flex: 0 0;
+}
+
+.workpiece ul li {
+  width: calc(100% / 3);
+  position: relative;
+}
+
+.workpiece ul li img {
+  margin: auto;
+  display: block;
+}
+
+.work1-1 {
+  width: 45vw;
+}
+
+.work2-1 {
+  width: 50vw;
+}
+
+.work3-1 {
+  width: 40vw;
+}
+
+.work1 div {
+  position: absolute;
+  left: 70%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+  width: 15vw;
+  height: 15vw;
+}
+
+.work2 div {
+  position: absolute;
+  left: 15%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 15vw;
+  height: 15vw;
+}
+
+.work3 div {
+  position: absolute;
+  left: 75%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 15vw;
+  height: 15vw;
+}
+
+.click a {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.click a img.circle {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.click a .go {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 68%;
+  height: 68%;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 2;
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 16px rgba(255, 255, 255, 0.4),
+    0 0 24px rgba(255, 255, 255, 0.25);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow:
+      0 0 6px rgba(255, 255, 255, 0.4),
+      0 0 12px rgba(255, 255, 255, 0.25),
+      0 0 18px rgba(255, 255, 255, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+
+  100% {
+    box-shadow:
+      0 0 6px rgba(255, 255, 255, 0.4),
+      0 0 12px rgba(255, 255, 255, 0.25),
+      0 0 18px rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* hover 시 원 배경만 어둡게 */
+.click a:hover .go {
+  background: #333;
+  box-shadow: none;
+  animation: none;
+}
+
+/* 화살표 */
+.go .arrow1 {
+  width: 45%;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s ease;
+}
+
+/* hover 시 화살표만 흰색 */
+.click a:hover .go .arrow1 {
+  filter: brightness(0) invert(1);
+}
+
+
+
+.click a img.circle {
+  position: relative;
+  z-index: 3;
+}
+
+.backline {
+  width: 100%;
+}
+
+.backline img {
+  width: 100%;
+  display: block;
+}
+
+.circle {
+  animation: spin 9s linear infinite;
+  transform-origin: center;
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.15));
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*-------------------------------푸터-------------------------------*/
+
+footer {
+  height: 100vh;
+  width: 100%;
+}
+
+footer h2 {
+  width: 100%;
+  height: 40%;
+  align-items: center;
+  position: relative;
+}
+
+footer h2 img {
+  display: block;
+  margin: auto;
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-between;
+  height: 60%;
+  align-items: center;
+}
+
+footer ul li {
+  width: 20%;
+}
+
+footer ul li img {
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+
+footer img {
+  mix-blend-mode: screen;
+}
